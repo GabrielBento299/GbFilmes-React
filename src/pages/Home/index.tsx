@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Container } from './styles';
+import { Container, MoviesContainer } from './styles';
+
 import MovieCard from '../../components/MovieCard';
 import { MoviesApi } from '../../types/Movie';
 
@@ -26,9 +27,9 @@ export default function Home() {
 
   return (
     <div>
-      <div className="container">
+      <Container>
         <h2>Melhores Filmes:</h2>
-        <div className="movies-container">
+        <MoviesContainer>
           {topMovies.length === 0 && <p>Carregando...</p>}
           {topMovies.length > 0 && topMovies.map((movie) => (
             <MovieCard
@@ -36,8 +37,8 @@ export default function Home() {
               movie={movie}
             />
           ))}
-        </div>
-      </div>
+        </MoviesContainer>
+      </Container>
     </div>
   );
 }

@@ -28,9 +28,8 @@ export const Container = styled.div`
         button {
             display: flex;
             align-items: center;
-
-            background-color: #F7D354;
-            border: 2px solid #F7D354;
+            background-color: #E50914;
+            border: 2px solid #E50914;
             border-radius: 7px;
             color: #000;
             padding: .3rem;

@@ -1,6 +1,7 @@
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { MoviesApi } from '../../types/Movie';
+import { Container } from './styles';
 
 interface IMovieCardsProps {
   movie: MoviesApi;
@@ -9,17 +10,20 @@ interface IMovieCardsProps {
 
 const imageUrl = import.meta.env.VITE_IMG;
 
-export default function MovieCard({ movie, showLink }:IMovieCardsProps) {
+export default function MovieCard({ movie, showLink = true }:IMovieCardsProps) {
   return (
-    <div className="Movie-card">
+    <Container>
       <img src={imageUrl + movie.poster_path} alt={movie.title} />
-      <h2>{movie.title}</h2>
-      <p>
-        <FaStar />
-        {movie.vote_average}
-      </p>
-
-      {showLink && <Link to={`/movie/${movie.id}`}>Detalhes</Link>}
-    </div>
+      <div className="info">
+        <h2>{movie.title}</h2>
+        <span>
+          <FaStar />
+          {movie.vote_average}
+          {' '}
+          Avaliações
+        </span>
+        {showLink && <Link to={`/movie/${movie.id}`}>Detalhes</Link>}
+      </div>
+    </Container>
   );
 }
