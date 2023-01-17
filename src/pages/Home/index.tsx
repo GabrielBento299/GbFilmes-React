@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Container } from './styles';
+import MovieCard from '../../components/MovieCard';
 import { MoviesApi } from '../../types/Movie';
 
 const moviesUrl = import.meta.env.VITE_API;
@@ -16,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-      const topRatedUrl = `${moviesUrl}top_rated?${apiKey}`;
+      const topRatedUrl = `${moviesUrl}top_rated?${apiKey}&language=pt-BR`;
 
       getTopRatedMovies(topRatedUrl);
     }, 1000);
@@ -24,14 +26,17 @@ export default function Home() {
 
   return (
     <div>
-      <h2>Melhores Filmes:</h2>
-      <div>
-        {topMovies.length === 0 && <p>Carregando...</p>}
-        {topMovies.length > 0 && topMovies.map((movie) => (
-          <div key={movie.id}>
-            <h1>{movie.title}</h1>
-          </div>
-        ))}
+      <div className="container">
+        <h2>Melhores Filmes:</h2>
+        <div className="movies-container">
+          {topMovies.length === 0 && <p>Carregando...</p>}
+          {topMovies.length > 0 && topMovies.map((movie) => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

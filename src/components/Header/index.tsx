@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { BiCameraMovie, BiSearchAlt2 } from 'react-icons/bi';
+import { Container } from './styles';
 
 export default function App() {
   return (
-    <header>
+    <Container>
       <h2>
         <Link to="/">
           <BiCameraMovie />
@@ -19,6 +20,6 @@ export default function App() {
           <BiSearchAlt2 />
         </button>
       </form>
-    </header>
+    </Container>
   );
 }
