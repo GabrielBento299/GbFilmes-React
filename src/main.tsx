@@ -5,6 +5,7 @@ import App from './components/App/App';
 import Home from './pages/Home';
 import Movie from './pages/Movie';
 import Search from './pages/Search';
+import Serie from './pages/Series';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -13,9 +14,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route element={<App />}>
           <Route path="/" element={<Home />} />
 
-          <Route path="/filme/:id" element={<Movie />} />
+          <Route path="movie/:id" element={<Movie />} />
 
-          <Route path="/procurar" element={<Search />} />
+          <Route path="search" element={<Search />} />
+
+          <Route path="series" element={<Serie />} />
+
         </Route>
       </Routes>
     </BrowserRouter>

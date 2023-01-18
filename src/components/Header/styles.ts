@@ -4,26 +4,34 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 7rem;
     background-color: #121212;
 
-    h2 {
+    .links {
         display: flex;
         align-items: center;
-        gap: 50.5rem;
+        gap: 2.5rem;
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-size: 2.5rem;
+
+            transition: .4s ease;
+
+            :hover {
+                transform: scale(1.10);
+            }
+        }
     }
 
     form {
         display: flex;
         align-items: center;
         gap: .2rem;
-
-        input {
-            padding: 0.7rem 0.8rem;
-            border: none;
-            outline: none;
-            border-radius: 7px;
-        }
+        max-width: 400px;
+        width: 100%;
 
         button {
             display: flex;
@@ -32,7 +40,8 @@ export const Container = styled.div`
             border: 2px solid #E50914;
             border-radius: 7px;
             color: #000;
-            padding: .3rem;
+            height: 40px;
+            padding: .5rem;
             font-size: 1.3rem;
 
             cursor: pointer;
