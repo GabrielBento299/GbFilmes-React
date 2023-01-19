@@ -1,16 +1,19 @@
+/* eslint-disable @typescript-eslint/quotes */
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { MoviesApi } from '../../types/Movie';
+import { useEffect, useState } from 'react';
+import { MoviesApi, Serieapi } from '../../types/Movie';
 import { Container } from './styles';
 
 interface IMovieCardsProps {
   movie: MoviesApi;
   showLink?: boolean;
+  typeLink? : string;
 }
 
 const imageUrl = import.meta.env.VITE_IMG;
 
-export default function MovieCard({ movie, showLink = true }:IMovieCardsProps) {
+export default function MovieCard({ movie, typeLink, showLink = true }: IMovieCardsProps) {
   return (
     <Container>
       <img src={imageUrl + movie.poster_path} alt={movie.title} />
@@ -20,7 +23,10 @@ export default function MovieCard({ movie, showLink = true }:IMovieCardsProps) {
         <span>
           <FaStar /> {movie.vote_average} {movie.vote_average === 1 ? 'Avaliação' : 'Avaliações'}
         </span>
-        {showLink && <Link to={`/movie/${movie.id}`}>Detalhes</Link>}
+        {typeLink === 'all' && (showLink && <Link to={`/all/${movie.id}`}>Detalhes</Link>)}
+        {typeLink === 'movie' && (showLink && <Link to={`/movie/${movie.id}`}>Detalhes</Link>)}
+        {typeLink === 'serie' && (showLink && <Link to={`/serie/${movie.id}`}>Detalhes</Link>)}
+        {movie.media_type}
       </div>
     </Container>
   );

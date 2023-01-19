@@ -4,39 +4,34 @@ import { MoviesApi } from '../../types/Movie';
 import { Container, ContainerMovie, Title } from '../../components/MoviesContainer/styles';
 import MovieDetail from '../../components/MovieDetail';
 
-const moviesUrl = import.meta.env.VITE_API;
+const moviesUrlTv = import.meta.env.VITE_API_TV;
 const apiKey = import.meta.env.VITE_API_KEY;
 
-export default function Movie() {
+export default function SeriePage() {
   const { id } = useParams();
 
-  const [movie, setMovies] = useState<MoviesApi>();
   const [tv, setTv] = useState<MoviesApi>();
 
-  async function getMovie(url: string) {
+  async function getTv(url: string) {
     const response = await fetch(url);
     const data = await response.json();
 
-    setMovies(data);
     setTv(data);
   }
 
   useEffect(() => {
-    const movieUrl = `${moviesUrl}${id}?${apiKey}&language=pt-BR`;
-
-    getMovie(movieUrl);
+    const serieUrl = `${moviesUrlTv}${id}?${apiKey}&language=pt-BR`;
+    getTv(serieUrl);
   }, [id]);
 
   return (
     <div>
-      {movie && (
+      {tv && (
         <Container>
-          <Title>Sobre o filme: {movie.title}</Title>
-          <ContainerMovie>
-            <MovieDetail movie={movie} />
-          </ContainerMovie>
+          <Title>Sobre o filme: {tv?.original_name}</Title>
+          <ContainerMovie />
         </Container>
-      ) }
+      )}
     </div>
   );
 }

@@ -15,6 +15,12 @@ export type MoviesApi = {
     name: string;
   }
   popularity: number;
-
   original_name: string;
+  media_type: string;
+};
+
+export type Serieapi = {
+  id: number;
+  original_name: string;
+
 };

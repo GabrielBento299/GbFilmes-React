@@ -13,8 +13,16 @@ export default createGlobalStyle`
         color: #fff;
     }
 
-    a {
-        text-decoration: none;
-        color: #f7d354;
+        &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #0a91d6;
+        border-radius: 20px;
     }
 `;

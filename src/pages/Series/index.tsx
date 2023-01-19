@@ -3,6 +3,7 @@ import { MoviesApi } from '../../types/Movie';
 import { Container, ContainerMovie, Title } from '../../components/MoviesContainer/styles';
 import MovieCard from '../../components/MovieCard';
 import Loader from '../../components/Loader';
+import Search from '../Search';
 
 const seriesUrl = import.meta.env.VITE_API_TV;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -40,10 +41,11 @@ export default function Serie() {
         <Title>Melhores Series</Title>
         <ContainerMovie>
           <Loader isLoading={isLoading} />
-          {series.length > 0 && series.map((movie) => (
+          {series.length > 0 && series.map((serie) => (
             <MovieCard
-              key={movie.id}
-              movie={movie}
+              key={serie.id}
+              movie={serie}
+              typeLink="serie"
             />
           ))}
         </ContainerMovie>

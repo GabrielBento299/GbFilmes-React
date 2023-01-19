@@ -17,6 +17,9 @@ export const Container = styled.div`
             align-items: center;
             gap: .5rem;
             font-size: 2.5rem;
+            text-decoration: none;
+            color: #f7d354;
+
 
             transition: .4s ease;
 

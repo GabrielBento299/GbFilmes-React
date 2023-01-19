@@ -22,7 +22,12 @@ export default function App() {
 
         <Link to="/">
           <BiCameraMovie />
-          Movies Lib
+          Principal
+        </Link>
+
+        <Link to="/movies">
+          <BiCameraMovie />
+          Filmes
         </Link>
 
         <Link to="/series">

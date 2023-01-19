@@ -10,18 +10,19 @@ import { Container } from './styles';
 
 interface IMovieDetail {
   movie: MoviesApi;
+  tv?: MoviesApi | undefined;
 }
 
 const imageUrl = import.meta.env.VITE_IMG;
 
-export default function MovieDetail({ movie } : IMovieDetail) {
+export default function MovieDetail({ movie, tv } : IMovieDetail) {
   return (
     <Container>
-      <img src={imageUrl + movie.poster_path} alt={movie.title} />
+      {/* <img src={imageUrl + movie.poster_path} alt={movie.title} />
       <div>
         <div className="info">
           <h3> <BsFillFileEarmarkTextFill /> Titulo:</h3>
-          <p>{movie.title}</p>
+          {tv?.original_name ? (tv?.original_name) : (<p>{movie.title}</p>)}
         </div>
 
         <div className="info">
@@ -53,7 +54,7 @@ export default function MovieDetail({ movie } : IMovieDetail) {
           <h3> <BsHourglassSplit /> Duração:</h3>
           <p>{movie.runtime}: Minutos</p>
         </div>
-      </div>
+      </div> */}
     </Container>
   );
 }

@@ -1,24 +1,23 @@
 import { useEffect, useState } from 'react';
-import Loader from '../../components/Loader';
-
-import MovieCard from '../../components/MovieCard';
 import { Container, ContainerMovie, Title } from '../../components/MoviesContainer/styles';
 import { MoviesApi } from '../../types/Movie';
+import Loader from '../../components/Loader';
+import MovieCard from '../../components/MovieCard';
 
 const moviesUrl = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
 
-export default function Home() {
-  const [AllMoviesTv, setAllMoviesTv] = useState<MoviesApi[]>([]);
+export default function Movies() {
+  const [allMovies, setAllMovies] = useState<MoviesApi[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  async function getTopRatedMovies(url: string) {
+  async function getAllMovies(url: string) {
     try {
       setIsLoading(true);
       const response = await fetch(url);
       const data = await response.json();
 
-      setAllMoviesTv(data.results);
+      setAllMovies(data.results);
     } catch (err) {
       alert('Erro Api');
     } finally {
@@ -28,24 +27,21 @@ export default function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-    //   const topRatedUrl = `${moviesUrl}top_rated?${apiKey}&language=pt-BR`;
-      const topRatedUrl = `https://api.themoviedb.org/3/trending/all/week?${apiKey}&language=pt-BR`;
-
-      //   https:// api.themoviedb.org/3/trending/all/day?
-      getTopRatedMovies(topRatedUrl);
+      const allMoviesUrl = `${moviesUrl}top_rated?${apiKey}&language=pt-BR`;
+      getAllMovies(allMoviesUrl);
     }, 1000);
   }, []);
-
   return (
+
     <Container>
-      <Title>Treding</Title>
+      <Title>Melhores filmes</Title>
       <ContainerMovie>
         <Loader isLoading={isLoading} />
-        {AllMoviesTv.length > 0 && AllMoviesTv.map((movie) => (
+        {allMovies.length > 0 && allMovies.map((movie) => (
           <MovieCard
             key={movie.id}
             movie={movie}
-            typeLink="all"
+            typeLink="movie"
           />
         ))}
       </ContainerMovie>

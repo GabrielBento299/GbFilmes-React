@@ -46,6 +46,7 @@ export const Container = styled.div`
         padding: 1rem 0.5rem;
         text-align: center;
         font-weight: bold;
+        text-decoration: none;
     }
 
     svg {
