@@ -3,7 +3,6 @@ import { MoviesApi } from '../../types/Movie';
 import { Container, ContainerMovie, Title } from '../../components/MoviesContainer/styles';
 import MovieCard from '../../components/MovieCard';
 import Loader from '../../components/Loader';
-import Search from '../Search';
 
 const seriesUrl = import.meta.env.VITE_API_TV;
 const apiKey = import.meta.env.VITE_API_KEY;

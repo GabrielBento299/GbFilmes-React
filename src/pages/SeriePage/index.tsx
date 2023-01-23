@@ -28,8 +28,10 @@ export default function SeriePage() {
     <div>
       {tv && (
         <Container>
-          <Title>Sobre o filme: {tv?.original_name}</Title>
-          <ContainerMovie />
+          <Title>Sobre A serie: {tv?.original_name}</Title>
+          <ContainerMovie>
+            <MovieDetail movie={tv} tv={tv} />
+          </ContainerMovie>
         </Container>
       )}
     </div>

@@ -14,8 +14,6 @@ export default function Search() {
   const query: string | null = searchParams.get('q');
 
   const [movies, setMovies] = useState<MoviesApi[]>([]);
-  const [tv, setTv] = useState('tv');
-  const [teste, setTeste] = useState('movie');
 
   async function getSearchMovies(url :string) {
     const response = await fetch(url);

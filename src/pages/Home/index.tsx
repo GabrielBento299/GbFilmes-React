@@ -19,6 +19,7 @@ export default function Home() {
       const data = await response.json();
 
       setAllMoviesTv(data.results);
+      console.log(data.results);
     } catch (err) {
       alert('Erro Api');
     } finally {
@@ -28,10 +29,8 @@ export default function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-    //   const topRatedUrl = `${moviesUrl}top_rated?${apiKey}&language=pt-BR`;
       const topRatedUrl = `https://api.themoviedb.org/3/trending/all/week?${apiKey}&language=pt-BR`;
 
-      //   https:// api.themoviedb.org/3/trending/all/day?
       getTopRatedMovies(topRatedUrl);
     }, 1000);
   }, []);

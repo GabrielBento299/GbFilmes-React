@@ -3,6 +3,7 @@ export type MoviesApi = {
   title: string;
   adult: boolean;
   poster_path: string;
+  backdrop_path: string;
   vote_average: number;
   budget: number;
   revenue: number;
@@ -17,6 +18,7 @@ export type MoviesApi = {
   popularity: number;
   original_name: string;
   media_type: string;
+  first_air_date: string;
 };
 
 export type Serieapi = {

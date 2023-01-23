@@ -27,7 +27,7 @@ export default function AllMoviesTv() {
     <div>
       {all && (
       <Container>
-        <Title>Sobre o filme: {all.original_name} {all.title}</Title>
+        <Title> Sobre o filme{all.original_name} {all.title}</Title>
         <ContainerMovie />
       </Container>
       )}

@@ -11,14 +11,12 @@ export default function Movie() {
   const { id } = useParams();
 
   const [movie, setMovies] = useState<MoviesApi>();
-  const [tv, setTv] = useState<MoviesApi>();
 
   async function getMovie(url: string) {
     const response = await fetch(url);
     const data = await response.json();
 
     setMovies(data);
-    setTv(data);
   }
 
   useEffect(() => {
