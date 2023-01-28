@@ -13,7 +13,9 @@ interface IMovieCardsProps {
 
 const imageUrl = import.meta.env.VITE_IMG;
 
-export default function MovieCard({ movie, typeLink, showLink = true }: IMovieCardsProps) {
+export default function MovieCard({
+  movie, typeLink, showLink = true,
+}: IMovieCardsProps) {
   return (
     <Container>
       <img src={imageUrl + movie.poster_path} alt={movie.title} />

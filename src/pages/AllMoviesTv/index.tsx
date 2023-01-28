@@ -8,6 +8,9 @@ const apiKey = import.meta.env.VITE_API_KEY;
 
 export default function AllMoviesTv() {
   const { id } = useParams();
+
+  console.log(id);
+
   const [all, setAll] = useState<MoviesApi>();
 
   async function getAll(url: string) {

@@ -17,9 +17,9 @@ export default function Home() {
       setIsLoading(true);
       const response = await fetch(url);
       const data = await response.json();
+      console.log(data.results);
 
       setAllMoviesTv(data.results);
-      console.log(data.results);
     } catch (err) {
       alert('Erro Api');
     } finally {
@@ -28,11 +28,8 @@ export default function Home() {
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      const topRatedUrl = `https://api.themoviedb.org/3/trending/all/week?${apiKey}&language=pt-BR`;
-
-      getTopRatedMovies(topRatedUrl);
-    }, 1000);
+    const topRatedUrl = `https://api.themoviedb.org/3/trending/all/week?${apiKey}&language=pt-BR`;
+    getTopRatedMovies(topRatedUrl);
   }, []);
 
   return (

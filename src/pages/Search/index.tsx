@@ -3,11 +3,14 @@ import { useEffect, useState } from 'react';
 import MovieCard from '../../components/MovieCard';
 import { MoviesApi } from '../../types/Movie';
 import { Container, ContainerMovie, Title } from '../../components/MoviesContainer/styles';
-import { typeRequest } from '../../hooks/useMoviesApi';
 
 const searchUrl = import.meta.env.VITE_SEARCH;
 const searchUrlTV = import.meta.env.VITE_SEARCH_TV;
 const apiKey = import.meta.env.VITE_API_KEY;
+
+interface ISearch {
+  type: string;
+}
 
 export default function Search() {
   const [searchParams] = useSearchParams();

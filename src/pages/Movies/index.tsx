@@ -26,10 +26,8 @@ export default function Movies() {
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      const allMoviesUrl = `${moviesUrl}top_rated?${apiKey}&language=pt-BR`;
-      getAllMovies(allMoviesUrl);
-    }, 1000);
+    const allMoviesUrl = `${moviesUrl}top_rated?${apiKey}&language=pt-BR`;
+    getAllMovies(allMoviesUrl);
   }, []);
   return (
 

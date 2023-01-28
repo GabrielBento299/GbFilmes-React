@@ -29,7 +29,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="serie/:id" element={<SeriePage />} />
 
           <Route path="all/:id" element={<AllMoviesTv />} />
-
         </Route>
       </Routes>
     </BrowserRouter>

@@ -48,7 +48,8 @@ export default function MovieDetail({ movie, tv } : IMovieDetail) {
 
         <div className="info">
           <h3> <BsFillFileEarmarkTextFill /> Data de lançamento:</h3>
-          <p>{format(parseISO(movie.release_date), 'dd/MM/yyyy')}</p>
+          {movie.release_date && (<p>{format(parseISO(movie.release_date), 'dd/MM/yyyy')}</p>)}
+          {movie.first_air_date && (<p>{format(parseISO(movie.first_air_date), 'dd/MM/yyyy')}</p>)}
         </div>
 
         {movie.runtime && (
