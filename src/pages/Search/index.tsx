@@ -1,8 +1,10 @@
 import { useSearchParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import MovieCard from '../../components/MovieCard';
 import { MoviesApi } from '../../types/Movie';
 import { Container, ContainerMovie, Title } from '../../components/MoviesContainer/styles';
+import { FilmMovieContext } from '../../Contexts/FilmMovie';
+import Loader from '../../components/Loader';
 
 const searchUrl = import.meta.env.VITE_SEARCH;
 const searchUrlTV = import.meta.env.VITE_SEARCH_TV;
@@ -16,13 +18,17 @@ export default function Search() {
   const [searchParams] = useSearchParams();
   const query: string | null = searchParams.get('q');
 
+  const { isLoading, setIsLoading } = useContext(FilmMovieContext);
+
   const [movies, setMovies] = useState<MoviesApi[]>([]);
 
   async function getSearchMovies(url :string) {
+    setIsLoading(true);
     const response = await fetch(url);
     const data = await response.json();
 
     setMovies(data.results);
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -31,10 +37,13 @@ export default function Search() {
     getSearchMovies(searchWithQueryURL);
 
     // const searchWithQueryURL = `${searchUrl}?${apiKey}&language=pt-BR&query=${query}`;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   return (
     <Container>
+      <Loader isLoading={isLoading} />
+
       {movies.length > 0 && (
         <Title>Sua busca para {query} Resultados:{movies.length}</Title>
       )}

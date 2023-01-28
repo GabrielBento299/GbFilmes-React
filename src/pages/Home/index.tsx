@@ -1,23 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Loader from '../../components/Loader';
 
 import MovieCard from '../../components/MovieCard';
 import { Container, ContainerMovie, Title } from '../../components/MoviesContainer/styles';
+import { FilmMovieContext } from '../../Contexts/FilmMovie';
 import { MoviesApi } from '../../types/Movie';
 
 const moviesUrl = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
 
 export default function Home() {
+  const { isLoading, setIsLoading } = useContext(FilmMovieContext);
   const [AllMoviesTv, setAllMoviesTv] = useState<MoviesApi[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   async function getTopRatedMovies(url: string) {
     try {
       setIsLoading(true);
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data.results);
 
       setAllMoviesTv(data.results);
     } catch (err) {
@@ -30,6 +30,7 @@ export default function Home() {
   useEffect(() => {
     const topRatedUrl = `https://api.themoviedb.org/3/trending/all/week?${apiKey}&language=pt-BR`;
     getTopRatedMovies(topRatedUrl);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
