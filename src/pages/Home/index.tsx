@@ -5,7 +5,6 @@ import MovieCard from '../../components/MovieCard';
 import { Container, ContainerMovie, Title } from '../../components/MoviesContainer/styles';
 import { FilmMovieContext } from '../../Contexts/FilmMovie';
 
-const moviesUrl = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
 
 export default function Home() {

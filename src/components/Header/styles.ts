@@ -1,16 +1,30 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2.5rem 7rem;
-    background-color: #121212;
+interface Teste {
+  toogle: boolean;
+}
 
-    .links {
+export const Container = styled.div`
         display: flex;
         align-items: center;
-        gap: 2.5rem;
+        justify-content: space-between;
+        padding: 2.5rem 7rem;
+        background-color: #121212;
+
+        @media screen and (max-width: 900px) {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+
+            @media screen and (max-width: 900px) {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
 
         a {
             display: flex;
@@ -36,6 +50,11 @@ export const Container = styled.div`
         max-width: 400px;
         width: 100%;
 
+        @media screen and (max-width: 900px) {
+            width: 350px;
+        }
+
+
         button {
             display: flex;
             align-items: center;
@@ -58,3 +77,43 @@ export const Container = styled.div`
     }
 
 `;
+
+// export const ContainerMobile = styled.div<Teste>`
+
+//             position: absolute;
+//             width: 100%;
+//             height: 100%;
+//             top: 0;
+//             bottom: 0;
+//             left: 0;
+//             right: 0;
+//             z-index: 5;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+//             backdrop-filter: blur(3px);
+//             background: rgba(17, 18, 17, 0.95);
+// eslint-disable-next-line max-len
+//             background: linear-gradient(34deg, rgba(25, 88, 24, 0.95) 0%, rgba(17, 18, 17, 0.95) 95%);
+//             display: none;
+
+//             .close-icon {
+//                 svg {
+//                     position: absolute;
+//                     top: 1rem;
+//                     right: 1rem;
+//                 }
+//             }
+
+//             a {
+//                 color: red;
+//             }
+
+//             .nav {
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: center;
+//                 flex-direction: column;
+//                 gap: 2rem;
+//             }
+// `;

@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { MoviesApi } from '../../types/Movie';
 import { Container, ContainerMovie, Title } from '../../components/MoviesContainer/styles';
+import { FilmMovieContext } from '../../Contexts/FilmMovie';
+import Loader from '../../components/Loader';
+import MovieCard from '../../components/MovieCard';
+import MovieDetail from '../../components/MovieDetail';
 
-const allUrl = import.meta.env.VITE_API_ALL;
 const apiKey = import.meta.env.VITE_API_KEY;
 
 export default function AllMoviesTv() {
   const { id } = useParams();
-
-  console.log(id);
 
   const [all, setAll] = useState<MoviesApi>();
 
@@ -21,8 +22,7 @@ export default function AllMoviesTv() {
   }
 
   useEffect(() => {
-    const allResults = `https://api.themoviedb.org/3/tv/${id}?${apiKey}&language=pt-BR`;
-
+    const allResults = `https://api.themoviedb.org/3/movie/${id}?${apiKey}&language=pt-BR`;
     getAll(allResults);
   }, [id]);
 
@@ -31,7 +31,9 @@ export default function AllMoviesTv() {
       {all && (
       <Container>
         <Title> Sobre o filme{all.original_name} {all.title}</Title>
-        <ContainerMovie />
+        <ContainerMovie>
+          <MovieDetail movie={all} />
+        </ContainerMovie>
       </Container>
       )}
     </div>

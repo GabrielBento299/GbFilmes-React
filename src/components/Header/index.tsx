@@ -8,7 +8,6 @@ export default function App() {
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
 
-  // eslint-disable-next-line consistent-return
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
@@ -34,8 +33,8 @@ export default function App() {
           <BiCameraMovie />
           Series
         </Link>
-
       </div>
+
       <form onSubmit={handleSubmit}>
         <Input
           type="text"

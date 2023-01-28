@@ -18,8 +18,7 @@ export default function Search() {
   const [searchParams] = useSearchParams();
   const query: string | null = searchParams.get('q');
 
-  const { isLoading, setIsLoading } = useContext(FilmMovieContext);
-
+  const { isLoading, setIsLoading, resultsType } = useContext(FilmMovieContext);
   const [movies, setMovies] = useState<MoviesApi[]>([]);
 
   async function getSearchMovies(url :string) {
@@ -53,6 +52,7 @@ export default function Search() {
           <MovieCard
             key={movie.id}
             movie={movie}
+            typeLink="all"
           />
         )) : <h1>Sem resultados para <strong>{query}</strong></h1>}
       </ContainerMovie>

@@ -9,12 +9,11 @@ const apiKey = import.meta.env.VITE_API_KEY;
 
 export default function Serie() {
   const [series, setSeries] = useState<MoviesApi[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   async function getSeries(url: string) {
     try {
       setIsLoading(true);
-
       const response = await fetch(url);
       const data = await response.json();
 
