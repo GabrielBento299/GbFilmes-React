@@ -1,5 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
-import { MoviesApi } from '../../types/Movie';
+import { useEffect, useContext } from 'react';
 import { Container, ContainerMovie, Title } from '../../components/MoviesContainer/styles';
 import MovieCard from '../../components/MovieCard';
 import Loader from '../../components/Loader';

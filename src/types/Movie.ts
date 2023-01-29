@@ -21,8 +21,4 @@ export type MoviesApi = {
   first_air_date: string;
 };
 
-export type Serieapi = {
-  id: number;
-  original_name: string;
-
-};
+export type MediaType = 'movie' | 'tv';

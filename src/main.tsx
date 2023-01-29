@@ -7,6 +7,7 @@ import AllMoviesTv from './pages/AllMoviesTv';
 import Home from './pages/Home';
 import Movie from './pages/Movie';
 import Movies from './pages/Movies';
+import NotFound from './pages/NotFound';
 import Search from './pages/Search';
 import SeriePage from './pages/SeriePage';
 import Serie from './pages/Series';
@@ -29,6 +30,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="serie/:id" element={<SeriePage />} />
 
           <Route path="all/:id" element={<AllMoviesTv />} />
+
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

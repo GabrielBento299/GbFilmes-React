@@ -18,9 +18,10 @@ interface IFilmMovieContextData {
   allSeries: MoviesApi[];
   setAllSeries: (value: MoviesApi[]) => void;
   getSeries: (url: string) => void;
+  resultsApi: MoviesApi[];
+  setResultsApi: (value: MoviesApi[]) => void;
+  getSearch: (url: string) => void;
 }
-
-const apiKey = import.meta.env.VITE_API_KEY;
 
 export const FilmMovieContext = createContext<IFilmMovieContextData>({} as IFilmMovieContextData);
 
@@ -28,6 +29,7 @@ export function FilmMovieContextProvider({ children }: FilmMovieProps) {
   const [allMoviesTv, setAllMoviesTv] = useState<MoviesApi[]>([]);
   const [allMovies, setAllMovies] = useState<MoviesApi[]>([]);
   const [allSeries, setAllSeries] = useState<MoviesApi[]>([]);
+  const [resultsApi, setResultsApi] = useState<MoviesApi[]>([]);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -73,6 +75,20 @@ export function FilmMovieContextProvider({ children }: FilmMovieProps) {
     }
   }
 
+  async function getSearch(url :string) {
+    try {
+      setIsLoading(true);
+      const response = await fetch(url);
+      const data = await response.json();
+
+      setResultsApi(data.results);
+    } catch (error) {
+      alert(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   const resultsType = allMoviesTv.map((movie) => movie.media_type);
 
   return (
@@ -90,6 +106,9 @@ export function FilmMovieContextProvider({ children }: FilmMovieProps) {
       allSeries,
       setAllSeries,
       getSeries,
+      resultsApi,
+      setResultsApi,
+      getSearch,
     }}
     >
       {children}

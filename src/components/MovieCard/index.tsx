@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/quotes */
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { MoviesApi, Serieapi } from '../../types/Movie';
+import { MoviesApi } from '../../types/Movie';
 import { Container } from './styles';
 
 interface IMovieCardsProps {
@@ -28,7 +27,6 @@ export default function MovieCard({
         {typeLink === 'all' && (showLink && <Link to={`/all/${movie.id}`}>Detalhes</Link>)}
         {typeLink === 'movie' && (showLink && <Link to={`/movie/${movie.id}`}>Detalhes</Link>)}
         {typeLink === 'serie' && (showLink && <Link to={`/serie/${movie.id}`}>Detalhes</Link>)}
-        {movie.media_type}
       </div>
     </Container>
   );
