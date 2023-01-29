@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     const topRatedUrl = `https://api.themoviedb.org/3/trending/all/week?${apiKey}&language=pt-BR`;
     getAllMoviesTv(topRatedUrl);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

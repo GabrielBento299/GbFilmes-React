@@ -1,29 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { MoviesApi } from '../../types/Movie';
 import { Container, ContainerMovie, Title } from '../../components/MoviesContainer/styles';
 import MovieCard from '../../components/MovieCard';
 import Loader from '../../components/Loader';
+import { FilmMovieContext } from '../../Contexts/FilmMovie';
 
 const seriesUrl = import.meta.env.VITE_API_TV;
 const apiKey = import.meta.env.VITE_API_KEY;
 
 export default function Serie() {
-  const [series, setSeries] = useState<MoviesApi[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  async function getSeries(url: string) {
-    try {
-      setIsLoading(true);
-      const response = await fetch(url);
-      const data = await response.json();
-
-      setSeries(data.results);
-    } catch (err) {
-      alert(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }
+  const { isLoading, allSeries, getSeries } = useContext(FilmMovieContext);
 
   useEffect(() => {
     setTimeout(() => {
@@ -39,7 +25,7 @@ export default function Serie() {
         <Title>Melhores Series</Title>
         <ContainerMovie>
           <Loader isLoading={isLoading} />
-          {series.length > 0 && series.map((serie) => (
+          {allSeries.length > 0 && allSeries.map((serie) => (
             <MovieCard
               key={serie.id}
               movie={serie}

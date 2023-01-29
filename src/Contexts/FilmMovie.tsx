@@ -12,6 +12,12 @@ interface IFilmMovieContextData {
   setAllMoviesTv: (value: MoviesApi[]) => void;
   getAllMoviesTv: (url: string) => void;
   resultsType: string[];
+  allMovies: MoviesApi[];
+  setAllMovies: (value: MoviesApi[]) => void;
+  getMovies: (url: string) => void;
+  allSeries: MoviesApi[];
+  setAllSeries: (value: MoviesApi[]) => void;
+  getSeries: (url: string) => void;
 }
 
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -20,6 +26,8 @@ export const FilmMovieContext = createContext<IFilmMovieContextData>({} as IFilm
 
 export function FilmMovieContextProvider({ children }: FilmMovieProps) {
   const [allMoviesTv, setAllMoviesTv] = useState<MoviesApi[]>([]);
+  const [allMovies, setAllMovies] = useState<MoviesApi[]>([]);
+  const [allSeries, setAllSeries] = useState<MoviesApi[]>([]);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -37,9 +45,35 @@ export function FilmMovieContextProvider({ children }: FilmMovieProps) {
     }
   }
 
-  const resultsType = allMoviesTv.map((movie) => movie.media_type);
+  async function getMovies(url: string) {
+    try {
+      setIsLoading(true);
+      const response = await fetch(url);
+      const data = await response.json();
 
-  //   const teste = allMoviesTv.find((movie) => movie.media_type === 'tv');
+      setAllMovies(data.results);
+    } catch (error) {
+      alert(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function getSeries(url: string) {
+    try {
+      setIsLoading(true);
+      const response = await fetch(url);
+      const data = await response.json();
+
+      setAllSeries(data.results);
+    } catch (error) {
+      alert(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  const resultsType = allMoviesTv.map((movie) => movie.media_type);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -50,6 +84,12 @@ export function FilmMovieContextProvider({ children }: FilmMovieProps) {
       setAllMoviesTv,
       getAllMoviesTv,
       resultsType,
+      allMovies,
+      setAllMovies,
+      getMovies,
+      allSeries,
+      setAllSeries,
+      getSeries,
     }}
     >
       {children}
